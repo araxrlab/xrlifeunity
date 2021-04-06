@@ -17,22 +17,15 @@ public class CamRotate : MonoBehaviour
         angle.y = -Camera.main.transform.eulerAngles.x;
         angle.x = Camera.main.transform.eulerAngles.y;
         angle.z = Camera.main.transform.eulerAngles.z;
-
-        lastPos = Input.mousePosition;
     }
 
-    Vector3 lastPos;
     void Update()
     {
         // 마우스 입력에 따라 카메라를 회전시키고 싶다.
         // 1. 사용자의 마우스 입력을 얻어와야 한다.
         // 마우스의 좌우 입력을 받는다.
-        //float x = Input.GetAxis("Mouse X");
-        //float y = Input.GetAxis("Mouse Y");
-        Vector3 mp = Input.mousePosition - lastPos;
-        float x = Mathf.Clamp(mp.x, -1, 1);
-        float y = Mathf.Clamp(mp.y, -1, 1);
-        lastPos = Input.mousePosition;
+        float x = Input.GetAxis("Mouse X");
+        float y = Input.GetAxis("Mouse Y");
 
         // 2. 방향이 필요하다.
         // 이동 공식에 대입해 각 속성별로 회전 값을 누적시킨다.
